@@ -13,35 +13,54 @@ import time
 import winsound
 import os
 
-# Input pour récuperer l'heure à laquelle le reveil sonnera
-heure_entree=input("Veuillez régler l'alarme au format (HH:MM): ")
-# Convertir en heure datetime pour le calcul
-heure_convertie = datetime.datetime.strptime(heure_entree, "%H:%M")
-# Try / except pour verifier la validité de l'heure et gestion d'erreurs
+def check_alarm(heure_entree):
+    heure_alarme = datetime.datetime.strptime(heure_entree, "%H:%M").time()
+
+    while True:
+        heure_actuelle = datetime.datetime.now().time()
+
+        if heure_actuelle >= heure_alarme:
+            cocorico()
+            break
+
+        time.sleep(1)
+
+def reveil_matin(heure_entree):
+    heure_actuelle = datetime.datetime.now()
+    print(heure_actuelle)
+    heure_convertie = datetime.datetime.strptime(heure_entree, "%H:%M")
+    alarme = heure_actuelle - heure_convertie
+    print(alarme)
+
+def cocorico():
+    reveil_matin(heure_entree)
+    fichier_son = os.path.join(os.getcwd(), 'sons', 'son.wav')
+    winsound.PlaySound(fichier_son, winsound.SND_FILENAME)
+
+def snooze():
+    print("Fonction snooze activée.")
+    time.sleep(2)  # 15 minutes = 900 secondes
+    cocorico()
+
+heure_entree = input("Veuillez régler l'alarme au format (HH:MM): ")
 heure_valide = True
+
 try:
     datetime.datetime.strptime(heure_entree, "%H:%M")
 except ValueError:
-            heure_valide = False
+    heure_valide = False
 
-
-# Variable pour récuperer l'heure actuelle (import datetime)
-heure_actuelle = datetime.datetime.now()
-print(heure_actuelle)
-
-def cocorico():
-# Lancer le son à partir de l'url du fichier
-    winsound.PlaySound('sons/son.wav', winsound.SND_FILENAME)	
-
-def snooze():
-    # Fonction pour retarder l'alarme
-    print("Fonction snooze activée.")
-    time.sleep(3) 
-
-choix_snooze = input("Souhaitez-vous activer la fonction snooze ? (Oui/Non) ")
-if choix_snooze.lower() == "oui":
-    snooze()
+if heure_valide:
+    check_alarm(heure_entree)
 else:
-    pass
+    print("Heure invalide. Veuillez entrer une heure au format HH:MM.")
 
+
+while True:
+    choix_snooze = input("Souhaitez-vous activer la fonction snooze ? (Oui/Non) ")
+    if choix_snooze.lower() == "oui":
+        snooze()
+    else:
+        print("N'oublies pas de te réveiller !")
+        break
 

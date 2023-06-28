@@ -37,15 +37,25 @@ def generer_code(message, decalage):
         message_code += lettre_code
     return message_code
 
+def substitution_msg(message_code, substitutions):
+   pass
+
 while True:
     # Tant que
-    message_original = input("Veuillez entrer le message à coder: ")
-    decalage = int(input("Combien de lettres de décalages voulez-vous ? "))
-    
-    message_code = generer_code(message_original, decalage)
-    print("Message original :", message_original)
-    print("Message codé     :", message_code)
+    # message_original = input("Veuillez entrer le message à coder: ")
+    message_original = "Bonjour, comment ça va ?" 
+    # decalage = int(input("Combien de lettres de décalages voulez-vous ? "))
+    decalage = 5
+    methode_1ou2=int(input("Choisissez la méthode de codage (1: Décalage, 2: Substitution): "))
 
+    if methode_1ou2 == 1:
+        message_code = generer_code(message_original, decalage)
+        print("Message original :", message_original)
+        print("Mode choisit : Décalage")
+        print("Message codé     :", message_code)
+    else:
+        pass
+    
     choix = input("Voulez-vous coder un autre message ? (Oui/Non) ")
     if choix.lower() != "oui":
         break
