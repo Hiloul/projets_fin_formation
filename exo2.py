@@ -15,46 +15,33 @@ import os
 
 # Input pour récuperer l'heure à laquelle le reveil sonnera
 heure_entree=input("Veuillez régler l'alarme au format (HH:MM): ")
-
 # Convertir en heure datetime pour le calcul
 heure_convertie = datetime.datetime.strptime(heure_entree, "%H:%M")
-
 # Try / except pour verifier la validité de l'heure et gestion d'erreurs
 heure_valide = True
 try:
     datetime.datetime.strptime(heure_entree, "%H:%M")
 except ValueError:
-    heure_valide = False
+            heure_valide = False
+
 
 # Variable pour récuperer l'heure actuelle (import datetime)
 heure_actuelle = datetime.datetime.now()
 print(heure_actuelle)
 
-# Variable qui récupère l'heure entrée précedemment
-# heure_alarme=input(f"Voulez vous régler le reveil pour {heure_entree}?")
+def cocorico():
+# Lancer le son à partir de l'url du fichier
+    winsound.PlaySound('sons/son.wav', winsound.SND_FILENAME)	
 
-reveil = heure_actuelle - heure_convertie 
-print(reveil)
+def snooze():
+    # Fonction pour retarder l'alarme
+    print("Fonction snooze activée.")
+    time.sleep(3) 
 
-# if heure_alarme == "o":
-# # Lancer le son à partir de l'url du fichier
-#     winsound.PlaySound('sons/son.wav', winsound.SND_FILENAME)	
-
-
-# # alarme= heure_entree - heure_actuelle 
-# # print(alarme)
-# # Test 5 minute
-# # time.sleep(300)
-# # Snooze(décaler) la sonnerie du reveil de 15min
-# snooze=time.sleep(2)
-
-# # Variable qui récupère la réponse à la fonction snooze 
-# snooze_question=input("Souhaitez vous refaire sonner le reveil dans 15min ?")
-
-# # while True:
-# #     if snooze_question == 'o':
-# #         print(snooze)
-# #     else:
-# #         break
+choix_snooze = input("Souhaitez-vous activer la fonction snooze ? (Oui/Non) ")
+if choix_snooze.lower() == "oui":
+    snooze()
+else:
+    pass
 
 
