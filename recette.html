@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<head>
+  <title>{{ titre }}</title>
+</head>
+<body>
+  <h1>{{ titre }}</h1>
+  <h2>Ingrédients :</h2>
+  <ul>
+    {% for ingredient in ingredients %}
+    <li>{{ ingredient }}</li>
+    {% endfor %}
+  </ul>
+  <h2>Instructions :</h2>
+  <pre>{{ instructions }}</pre>
+</body>
