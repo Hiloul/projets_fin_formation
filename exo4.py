@@ -43,35 +43,23 @@ image_tk3 = ImageTk.PhotoImage(image_redimensionnee3)
 compteur = tk.IntVar()
 compteur.set(0)
 label_compteur = tk.Label(root, textvariable=compteur, font=("Arial", 24))
-
-# Variable pour afficher image 
-etiquette = tk.Label(root, image=image_tk)
-# etiquette.pack()
-etiquette2 = tk.Label(root, image=image_tk2)
-# etiquette2.pack()
-etiquette3 = tk.Label(root, image=image_tk3)
-# etiquette3.pack()
     
 def quit_button_click():
     if messagebox.askyesno("Quitter", "En êtes vous sur(e)?"):
         root.destroy()
 
-# def incrementer_button():
-#     if compteur:
-#         compteur.set(compteur.get() + 1)
-#     elif compteur == 10:
-#         etiquette.pack()
-#     elif compteur == 20:
-#         etiquette2.pack()
-#     elif compteur == 30:
-#         etiquette3.pack()
-
 def incrementer_button():
-    while compteur:
-        compteur.set(compteur.get() + 1)
-
-        break
-
+    compteur.set(compteur.get() + 1)
+    if compteur.get() == 10:
+       etiquette = tk.Label(root, image=image_tk)
+       etiquette.pack()
+    elif compteur.get() == 20:
+        etiquette2 = tk.Label(root, image=image_tk2)
+        etiquette2.pack(side="bottom")     
+    elif compteur.get() == 30:
+        etiquette3 = tk.Label(root, image=image_tk3)
+        etiquette3.pack(side="bottom")
+        compteur.set(0) 
 
 # Placement compteur dans la fenêtre
 label_compteur.pack()
