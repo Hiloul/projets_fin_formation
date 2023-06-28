@@ -7,7 +7,6 @@
 # 7. Continue à vérifier l'heure actuelle et à déclencher l'alarme 
 # 8. Jusqu'à ce que l'user choisisse de ne pas activer la fonction snooze.
 # ++ modules os pour effectuer des opérations système.
-
 import datetime
 import time
 import winsound
@@ -27,10 +26,10 @@ def check_alarm(heure_entree):
 
 def reveil_matin(heure_entree):
     heure_actuelle = datetime.datetime.now()
-    print(heure_actuelle)
+    # print(heure_actuelle)
     heure_convertie = datetime.datetime.strptime(heure_entree, "%H:%M")
     alarme = heure_actuelle - heure_convertie
-    print(alarme)
+    # print(alarme)
 
 def cocorico():
     reveil_matin(heure_entree)
