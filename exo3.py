@@ -12,7 +12,6 @@
 # 6. L'user peut lancer l'app et observer le compteur affiché. 
 # ++ image nommée "Cadeau.png" dans un dossier "images"
 # ++ Le titre de la fenêtre est clair
-
 from tkinter import messagebox
 import tkinter as tk
 from PIL import ImageTk, Image
