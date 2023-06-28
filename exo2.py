@@ -33,24 +33,25 @@ print(heure_actuelle)
 # Variable qui récupère l'heure entrée précedemment
 heure_alarme=input(f"Voulez vous régler le reveil pour {heure_entree}?")
 
+if heure_alarme == "o":
+# Lancer le son à partir de l'url du fichier
+    winsound.PlaySound('sons/son.wav', winsound.SND_FILENAME)	
+
+
 # alarme= heure_entree - heure_actuelle 
 # print(alarme)
 # Test 5 minute
 # time.sleep(300)
 # Snooze(décaler) la sonnerie du reveil de 15min
-# snooze=time.sleep(2)
+snooze=time.sleep(2)
 
-# # # Variable qui récupère la réponse à la fonction snooze 
-# snooze_reveil=input("Souhaitez vous refaire sonner le reveil dans 15min ?")
+# Variable qui récupère la réponse à la fonction snooze 
+snooze_question=input("Souhaitez vous refaire sonner le reveil dans 15min ?")
 
 # while True:
-#     if snooze_reveil == 'o':
-#         print(snooze_reveil)
+#     if snooze_question == 'o':
+#         print(snooze)
 #     else:
-#         print('bye')
-
-# # Lancer le son à partir de l'url du fichier
-# winsound.PlaySound('sons/son.wav', winsound.SND_FILENAME)	
-
+#         break
 
 
